@@ -15,7 +15,7 @@ export const LoginPage = () => {
             </form>
             <p>No account? Sign up <a href="/register" >here!</a></p>
             <button type="submit">Sign in</button>
-            <button><a href="/#">Proceed as guest user</a></button>
+            <button><a href="/guest">Proceed as guest user</a></button>
         </div>
     </div>
   )

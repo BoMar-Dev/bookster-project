@@ -1,10 +1,8 @@
-import React from 'react'
-import  SearchField  from '../components/SearchField'
 
-export const GuestPage = () => {
+
+const OverAllPage = () => {
   return (
-    <div className='guest-container'>
-        < SearchField />
+     <div className='user-container'>
         <section>
             <h2>Book title</h2>
             <p>lorem ipsum</p>
@@ -20,3 +18,4 @@ export const GuestPage = () => {
     </div>
   )
 }
+export default OverAllPage

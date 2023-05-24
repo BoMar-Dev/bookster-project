@@ -1,9 +1,10 @@
 const Header = () => {
+
   return (
     <header className="header-container">
         <h1>Bookster Website</h1>
-        <button>Sign Out</button>
-        <p>Browsing as user -username-  </p>
+        <p>Browsing as user <span>-username- </span></p>
+        <button><a href="/">Sign Out</a></button>
     </header>
   )
 }
