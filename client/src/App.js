@@ -1,4 +1,4 @@
-import Header from './components/Header'
+import {Header} from './components/Header'
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { Routes, Route, } from 'react-router-dom';
@@ -17,7 +17,6 @@ function App() {
         < Route path="/guest" element={ <GuestPage/> } />
         < Route path="/user" element={ <UserPage/> } />
       </Routes>
-      
     </div>
     </>
   );

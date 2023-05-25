@@ -1,12 +1,10 @@
-import SearchField from "../components/SearchField";
-import OverAllPage from "./OverAllPage";
 import React from "react";
+import { GuestPage } from "./GuestPage";
 
 export const UserPage = () => {
   return (
     <div className='user-container'>
-        < SearchField />
-        < OverAllPage/>
+        < GuestPage />
         <section>
             <h2>Order</h2>
             <div>
