@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { LoginService } from '../components/LoginService';
-import { UserPage } from './UserPage';
+
 
 
 // const LOGIN_URL = "http://localhost:4000/auth/login";
 
 
 
-export const LoginPage = () => {
+ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [username, setUsername]= useState('');
+ 
 
   const navigate = useNavigate();
 
@@ -41,7 +42,7 @@ export const LoginPage = () => {
                 <input 
                 type="text" 
                 placeholder='Type your username...' 
-                autoComplete='off' 
+                autoComplete='off'
                 value={username}
                 required 
                 onChange={(e) => setUsername(e.target.value)}
@@ -65,3 +66,4 @@ export const LoginPage = () => {
   )
 }
 
+export default LoginPage

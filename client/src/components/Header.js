@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react"
 import { SearchField } from './SearchField';
 
-export const Header = () => {
+ const Header = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
 
 
@@ -38,3 +38,4 @@ console.log(currentUser);
     </header>
   )
 }
+export default Header

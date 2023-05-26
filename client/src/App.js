@@ -1,5 +1,5 @@
-import {Header} from './components/Header'
-import { LoginPage } from './pages/LoginPage';
+import Header from './components/Header'
+import LoginPage from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { Routes, Route, } from 'react-router-dom';
 import { GuestPage } from './pages/GuestPage';

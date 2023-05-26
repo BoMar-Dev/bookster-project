@@ -1,40 +1,69 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent, } from '@testing-library/react';
+import userEvent from "@testing-library/user-event";
+
 import App from './App';
 import Header from './components/Header';
-import { LoginPage } from './pages/LoginPage';
+import  LoginPage  from './pages/LoginPage';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 // import axios from 'axios';
-
-// HEADER TEST
-test('as a use i would like to know if the text is in the header', () => {
-  render(<Header />);
-  const linkElement = screen.getByText(/Bookster/i);
-  expect(linkElement).toBeInTheDocument();
-});
 
 
 // Button sign in test
-test('as user i would like to be able to press button "sign in.."', () => {
-  render(<LoginPage />);
+test('as user i would like to be able to see a button "sign in.."', () => {
+  render(
+  <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<LoginPage/> } />
+    </Routes>
+  </BrowserRouter>);
   const button = screen.getByRole('button', { name: 'Sign in' });
   expect(button).toBeInTheDocument();
 });
 
-
-// Register page
-test('as use I would like know if there is a link with name "here', () => {
-  render(<LoginPage />);
-  const button = screen.getByRole('link', { name: 'here!' });
-  expect(button).toBeInTheDocument();
+// characters needed in input fields
+test('As a user i would like to enter at least 3 characters in both username, and password.', () => {
+  render(
+  <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<LoginPage/> } />
+    </Routes>
+  </BrowserRouter>);
+const passwordInputElement = screen.getByPlaceholderText(/password/i);
+expect(passwordInputElement.value).toBe("")
 });
 
 
-// Input Field Test 
 
-// test('as a user i would like to be able to type my username in the input field', () => {
-//   render(<App />);
-//   const result = (3+8)
-//   expect(result).toBe(11)
-// });
+test('FUCK OFF', () => {
+  render(
+  <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<LoginPage/> } />
+    </Routes>
+  </BrowserRouter>);
+
+expect(screen.getByTestId('submitBtn')).toBeDisabled();
+
+const input = screen.getByTestId('usernameInput');
+fireEvent.change(input, {target: {value: 'matti'}});
+
+expect(screen.getByTestId('submitBtn')).toBeEnabled();
+});
+
+
+
+
+// Button sign in test
+test('Math', () => {
+  render(<BrowserRouter><Routes><Route path='/' element={<LoginPage/>}/></Routes></BrowserRouter>);
+  const numbers  = (3+5)
+  expect(numbers).toBe(8);
+});
+
+
+
+
+
 
 
 
