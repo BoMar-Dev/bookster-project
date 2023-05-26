@@ -27,8 +27,8 @@ useEffect(() => {
 
   return (
     <div className='guest-container'>
-        <section>
-          <h2>Book title</h2>
+        <section >
+          <h2>Book title</h2> 
           {books.map((bookTitle) => {
             const {title} = bookTitle; 
             return (<p>{title}</p>)
