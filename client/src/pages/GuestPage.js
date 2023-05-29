@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import React from 'react'
+import { SearchField } from '../components/SearchField';
+import { signOutBtn } from '../components/SignInAndOutButton';
 
 
 export const GuestPage = () => {
@@ -27,6 +29,8 @@ useEffect(() => {
 
   return (
     <div className='guest-container'>
+      < SearchField />
+      {/* {signOutBtn()} */}
         <section >
           <h2>Book title</h2> 
           {books.map((bookTitle) => {

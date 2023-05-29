@@ -1,40 +1,39 @@
-import {useState, useEffect} from "react"
-import { SearchField } from './SearchField';
+import {useState, useEffect} from "react";
+import '../style/Header.css';
+import { signInButton, signOutBtn } from "./SignInAndOutButton";
+import { SearchField } from "./SearchField";
 
  const Header = () => {
-  const [currentUser, setCurrentUser] = useState(undefined);
+  const [loggedIn, setLoggedIn] = useState(false);
 
-
-  const getCurrentUser = () => {
-    return JSON.parse(sessionStorage.getItem('username'));
+  function checkJwt(){
+    const jwtToken = sessionStorage.getItem("user");
+    if(jwtToken !== null){
+      setLoggedIn(true);
+    }else{
+      setLoggedIn(false);
+    }
+    
   }
 
   useEffect(() => {
-    const user = getCurrentUser();
+    checkJwt();
 
-    if (user) {
-      setCurrentUser(user);
-    }
-  }, []);
-console.log(currentUser);
+  }, [loggedIn])
+  
+  
   return (
     <header className="header-container">
       
-        <h1>Bookster Website</h1>
-        {currentUser ? (
-          <div>
-            <p>Browsing as user <span>-{currentUser.username}- </span></p>
-            <button><a href="/">Sign Out</a></button>
-          </div>
-        ) : (
-          <div>
-            <p>Browsing as guest</p>
-            <button><a href="/">Sign Out</a></button>
-          </div>
-        )}
-        
-        
-        <SearchField/>
+        <h1 className="header-title">Bookster Website</h1>
+
+         {loggedIn ? signOutBtn(): signInButton()}
+         {/* {!loggedIn && signInButton()} */}
+        {/* <div className="Allt-inom-denna-div-ska-döljas-på-startsidan">
+          <p>Browsing as GUEST <span>--username--</span></p>
+          {signInButton()}
+        </div> */}
+      
     </header>
   )
 }

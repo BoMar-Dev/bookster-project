@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { LoginService } from '../components/LoginService';
+import Header from '../components/Header';
 
 
 
@@ -11,6 +12,9 @@ import { LoginService } from '../components/LoginService';
  const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [username, setUsername]= useState('');
+  const [proceedAsGuest, setProceedAsGuest]=useState(false)
+  const [role, setRole] = useState();
+  
  
 
   const navigate = useNavigate();
@@ -18,10 +22,24 @@ import { LoginService } from '../components/LoginService';
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await LoginService(username,password).then(
+      await LoginService(username,password,role ).then(
         () => {
+          
           navigate('/user');
           window.location.reload();
+
+          // if(role === "ADMIN"){
+          //   navigate('/admin');
+          //   window.location.reload();
+          // } else if (role === "USER"){
+          //   navigate('/user');
+          //   window.location.reload();
+          // } else {
+          //   navigate('/guest')
+          //   window.location.reload();
+          // }
+
+          
         },
         (error) => {
           console.log(error);
@@ -60,7 +78,9 @@ import { LoginService } from '../components/LoginService';
                 <button type="submit">Sign in</button>
             </form>
             <p>No account? Sign up <a href="/register" >here!</a></p>
-            <button><a href="/guest">Proceed as guest user</a></button>
+            <button onClick={()=>setProceedAsGuest(!proceedAsGuest)} ><a href="/guest">Proceed as guest user</a></button>
+           
+           
         </div>
     </div>
   )
