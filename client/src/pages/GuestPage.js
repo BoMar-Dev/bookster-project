@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import React from 'react'
 import { SearchField } from '../components/SearchField';
-import { signOutBtn } from '../components/SignInAndOutButton';
-
+import { useNavigate } from 'react-router-dom';
+import PageNavigation from '../components/PageNavigation';
 
 export const GuestPage = () => {
+  const [books, setBooks] = useState([]);
+  const navigate = useNavigate();
 
   const API_URL = 'http://localhost:4000/library/books';
-
-const [books, setBooks] = useState([]);
-
-useEffect(() => {
+  
+  
+  useEffect(() => {
     const fetchData = async () => {
         try {
             const response = await fetch(API_URL);
@@ -23,17 +24,17 @@ useEffect(() => {
     };
     fetchData();
     
-}, []);
+  }, []);
 
+  PageNavigation();
 
 
   return (
     <div className='guest-container'>
       < SearchField />
-      {/* {signOutBtn()} */}
         <section >
-          <h2>Book title</h2> 
-          {books.map((bookTitle) => {
+          <h2>Book title</h2>
+          {books.map((bookTitle, bookAuthor) => {
             const {title} = bookTitle; 
             return (<p>{title}</p>)
           })}

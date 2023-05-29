@@ -2,12 +2,10 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { LoginService } from '../components/LoginService';
 import Header from '../components/Header';
-
+import getJwtInfo from '../utils/getJwtInfo';
 
 
 // const LOGIN_URL = "http://localhost:4000/auth/login";
-
-
 
  const LoginPage = () => {
   const [password, setPassword] = useState('');
@@ -15,31 +13,23 @@ import Header from '../components/Header';
   const [proceedAsGuest, setProceedAsGuest]=useState(false)
   const [role, setRole] = useState();
   
- 
 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await LoginService(username,password,role ).then(
+      await LoginService(username,password).then(
         () => {
-          
-          navigate('/user');
-          window.location.reload();
-
-          // if(role === "ADMIN"){
-          //   navigate('/admin');
-          //   window.location.reload();
-          // } else if (role === "USER"){
-          //   navigate('/user');
-          //   window.location.reload();
-          // } else {
-          //   navigate('/guest')
-          //   window.location.reload();
-          // }
-
-          
+          const token = sessionStorage.getItem("user")
+          if(token === null){
+            navigate("/guest")
+          }
+          if(getJwtInfo()?.role === "ADMIN"){
+            navigate("/admin/books")
+          }else if(getJwtInfo()?.role === "USER"){
+            navigate("/user")
+          }
         },
         (error) => {
           console.log(error);

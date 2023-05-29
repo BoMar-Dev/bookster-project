@@ -3,15 +3,27 @@ import { Outlet, Link, useNavigate } from "react-router-dom";
 import FilterUsers from "../components/admin/FilterUsers";
 import FilterBooks from "../components/admin/FilterBooks";
 import '../style/Admin.css';
+import Header from "../components/Header";
+import isAdmin from '../utils/isAdmin';
+import getJwtInfo from '../utils/getJwtInfo';
+import { useEffect } from "react";
+import PageNavigation from "../components/PageNavigation";
 
 export const AdminPage = () => {
   const navigate = useNavigate();
 
+  
+  // göras en funktion av detta??? (används på admin, user, guest)
+  PageNavigation();
+
   return (
+    <>
     <div className="filter-btn-container">
           <button className="filter-btns" onClick={() => {navigate('/admin/books')}}>Books</button>
           <button className="filter-btns" onClick={() => {navigate('/admin/users')}}>Users</button>
-      <Outlet/>
     </div>
+    {/* <FilterBooks /> */}
+    <Outlet/>
+    </>
   )
 }
