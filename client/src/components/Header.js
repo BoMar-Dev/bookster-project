@@ -13,7 +13,6 @@ import { SearchField } from "./SearchField";
     }else{
       setLoggedIn(false);
     }
-    
   }
 
   useEffect(() => {

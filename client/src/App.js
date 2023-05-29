@@ -7,6 +7,8 @@ import { UserPage } from './pages/UserPage';
 import './style/Main.css';
 import { AdminPage } from './pages/AdminPage';
 import { signInButton, signOutBtn } from './components/SignInAndOutButton';
+import FilterBooks from './components/admin/FilterBooks';
+import FilterUsers from './components/admin/FilterUsers';
 
 function App() {
   return (
@@ -18,7 +20,10 @@ function App() {
         < Route path="/register" element={ <RegisterPage/> } />
         < Route path="/guest" element={ <GuestPage/> } />
         < Route path="/user" element={ <UserPage/> } />
-        < Route path="/admin" element={ <AdminPage/> } />
+        < Route path="/admin" element={ <AdminPage/> }> 
+            <Route path="books" element={ <FilterBooks/> } />
+            <Route path="users" element={ <FilterUsers/> } />
+        </Route>
       </Routes>
     </div>
     </>
