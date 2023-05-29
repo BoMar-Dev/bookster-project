@@ -10,10 +10,8 @@ import getJwtInfo from '../utils/getJwtInfo';
  const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [username, setUsername]= useState('');
-  const [proceedAsGuest, setProceedAsGuest]=useState(false)
-  const [role, setRole] = useState();
+  const [proceedAsGuest, setProceedAsGuest] = useState(false);
   
-
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -24,11 +22,14 @@ import getJwtInfo from '../utils/getJwtInfo';
           const token = sessionStorage.getItem("user")
           if(token === null){
             navigate("/guest")
+            window.location.reload(false);
           }
           if(getJwtInfo()?.role === "ADMIN"){
             navigate("/admin/books")
+            window.location.reload(false); // Utan detta så behöver man refresha 2 ggr för att se logout-knappen
           }else if(getJwtInfo()?.role === "USER"){
             navigate("/user")
+            window.location.reload(false);
           }
         },
         (error) => {

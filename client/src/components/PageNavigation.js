@@ -9,7 +9,7 @@ function PageNavigation() {
     useEffect(() => {
         const token = sessionStorage.getItem("user")
         if(token === null){
-          navigate("/guest"); 
+          navigate("/guest");
         }
         if(getJwtInfo()?.role === "ADMIN"){
           navigate("/admin/books")
