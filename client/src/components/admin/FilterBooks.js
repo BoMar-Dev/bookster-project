@@ -1,12 +1,12 @@
-import { UserPage } from "../../pages/UserPage"
+
 import { useState, useEffect } from "react";
 
 const FilterBooks = () => {
   const API_URL = 'http://localhost:4000/library/books';
   const [books, setBooks] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
+
+      const fetchData = async () => {
         try {
             const response = await fetch(API_URL);
             const books = await response.json()
@@ -16,6 +16,9 @@ const FilterBooks = () => {
             console.log(error);
         }
     };
+
+  useEffect(() => {
+
     fetchData();
     
   }, []);

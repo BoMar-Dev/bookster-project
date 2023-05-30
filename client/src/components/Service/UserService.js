@@ -1,10 +1,12 @@
-import axios from 'axios';
-const LOGIN_URL = "http://localhost:4000/auth/login";
 
-export const LoginService = async (username,password) => {
-  const response = await axios.post(LOGIN_URL, {
+import axios from 'axios';
+
+const REG_URL = "http://localhost:4000/admin/users";
+
+export const LoginService = async (username,role) => {
+  const response = await axios.post(REG_URL, {
     username,
-    password,
+    role,
   });
   
   if (response.data.accessToken) {

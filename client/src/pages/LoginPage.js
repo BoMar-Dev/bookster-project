@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { LoginService } from '../components/LoginService';
+import { LoginService } from '../components/Service/LoginService';
 
 import getJwtInfo from '../utils/getJwtInfo';
 

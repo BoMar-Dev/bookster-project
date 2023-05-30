@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { RegisterService } from '../components/RegisterService';
+import { RegisterService } from '../components/Service/RegisterService';
 
 export const RegisterPage = () => {
     const [password, setPassword] = useState('');
