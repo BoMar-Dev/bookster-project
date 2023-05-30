@@ -26,7 +26,7 @@ import getJwtInfo from '../utils/getJwtInfo';
           }
           if(getJwtInfo()?.role === "ADMIN"){
             navigate("/admin/books")
-            window.location.reload(false); // Utan detta så behöver man refresha 2 ggr för att se logout-knappen
+            window.location.reload(false);
           }else if(getJwtInfo()?.role === "USER"){
             navigate("/user")
             window.location.reload(false);

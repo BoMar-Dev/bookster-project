@@ -13,7 +13,6 @@ export const AdminPage = () => {
   const navigate = useNavigate();
 
   
-  // göras en funktion av detta??? (används på admin, user, guest)
   PageNavigation();
 
   return (
