@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { LoginService } from '../components/LoginService';
-import Header from '../components/Header';
+
 import getJwtInfo from '../utils/getJwtInfo';
 
 
-// const LOGIN_URL = "http://localhost:4000/auth/login";
+
 
  const LoginPage = () => {
   const [password, setPassword] = useState('');

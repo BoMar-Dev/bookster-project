@@ -3,13 +3,26 @@ import React from 'react'
 import { SearchField } from '../components/SearchField';
 import { useNavigate } from 'react-router-dom';
 import PageNavigation from '../components/PageNavigation';
+import FetchApi from '../API/FetchApi';
 
 export const GuestPage = () => {
   const [books, setBooks] = useState([]);
   const navigate = useNavigate();
 
+  // FetchApi();
+
   const API_URL = 'http://localhost:4000/library/books';
-  
+
+
+  //  function quantityCheck () {
+  //  // quanitty fron api
+  //  // quantity from api minus 1
+  //  // sparas i ny lista
+  //  //uppdateras och renderas ut
+
+  // }
+
+
   
   useEffect(() => {
     const fetchData = async () => {
@@ -32,27 +45,24 @@ export const GuestPage = () => {
   return (
     <div className='guest-container'>
       < SearchField />
-        <section >
-          <h2>Book title</h2>
-          {books.map((bookTitle, bookAuthor) => {
-            const {title} = bookTitle; 
-            return (<p>{title}</p>)
+      <section>
+        <h2>Book title</h2>
+        <h2>Book author</h2>
+        <h2>Availability</h2>
+      </section>
+      <ul>
+        <li key={books}> {books.map((book) => {
+            const {title, author, quantity} = book; 
+            return (
+              <div>
+                <p>{title}</p>
+                <p>{author}</p>
+                <p>{quantity}</p>
+              </div>
+            )
           })}
-        </section>
-        <section>
-          <h2>Book author</h2>
-          {books.map((bookAuthor) => {
-            const {author} = bookAuthor; 
-            return (<p>{author}</p>)
-          })}
-        </section>
-        <section>
-          <h2>Availability</h2>
-          {books.map((bookQuantity) => {
-            const {quantity} = bookQuantity; 
-            return (<p>{quantity}</p>)
-          })}
-        </section>
+        </li>
+      </ul>
     </div>
   )
 }
