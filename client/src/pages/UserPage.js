@@ -2,13 +2,17 @@ import React from "react";
 import getJwtInfo from '../utils/getJwtInfo';
 import { useState, useEffect } from "react";
 import PageNavigation from "../components/PageNavigation";
-// import Order from "../components/Order";
+import fetchApi from "../data/FetchApi";
+// import ActionSection from "../components/ActionSection";
 
 
 export const UserPage = () => {
   const API_URL = 'http://localhost:4000/library/books';
   const [books, setBooks] = useState([]);
   const [count, setCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true)
+ 
+
  
   PageNavigation();
 
@@ -27,6 +31,13 @@ export const UserPage = () => {
     
   }, []);
 
+  
+
+
+
+  // Jakob brukar skriva : books.count = book.count === undefined ? 0 : book.count;
+  // när vi trycker på order --> count nollas, antalet counts kan inte överskrida quantity
+
 
   const decreaseCount = (title) => {
     setBooks(books.map(book => {
@@ -40,7 +51,6 @@ export const UserPage = () => {
     }))
   }
 
-  //Jakob brukar skriva : books.count = book.count === undefined ? 0 : book.count;
 
   const increaseCount = (title) => {
     setBooks(books.map(book => {
@@ -49,11 +59,59 @@ export const UserPage = () => {
           book.count = 0;
         }
         book.count += 1
+        console.log(count);
+
       }
       return book;
     }))
   }
 
+  // const placeOrderAndResetValue = async (title) => {
+  //   console.log(title,book)
+  //   const response = await fetchApi("http://localhost:4000/library/user/books", "POST", {title, book.count})
+    
+  //     setIsLoading(false)
+  //   }
+
+ const placeOrderAndResetValue = (title) => {
+  setIsLoading(false)
+  console.log(title)
+  setBooks(books.map(async book => {
+     if(book.title === title){
+      
+      const quantity = book.count;
+      const response = await fetchApi("http://localhost:4000/library/user/books","POST", {title, quantity})
+      // console.log(await response.json())
+      if(response.status < 400){
+        const data = await response.json();
+        console.log(data)
+        setBooks(data.context.books)
+      }else{
+        console.log(await response.text());
+      }
+      setIsLoading(true)
+    }
+    
+  }))
+  
+  
+}
+//  }
+  // const placeOrderAndResetValue = (title) => {
+  //   setBooks(books.map(book => {
+  //     if(book.title === title){
+  //       book.count = 0;
+  //       console.log(books.quantity);
+  //     }
+  //     return book;
+  //   }))
+// }
+
+//  POST /library/user/books { "title", "quantity" }
+// "title" är case sensitive. "quantity" godtas endast om antal böcker finns i databasen.
+// Responsen är en lista över alla böcker och ett verisonsnummer som används vid högre betyg. Se kriterier.
+
+// Vid avsaknad av paramterar ges 403.
   
 
   return (
@@ -65,28 +123,29 @@ export const UserPage = () => {
         <h2>Availability</h2>
         <h2>Order</h2>
       </section>
-      <ul>
-        <li key={books}> {books.map((book) => {
-            const {title, author, quantity} = book; 
-            return (
-              <div>
-                <p>{title}</p>
-                <p>{author}</p>
-                <p>{quantity}</p>
-                <div className="order-section">
-                  <div className="order-add-remove-btn">
-                  <button onClick={() => decreaseCount(title)}> - </button>
-                    <span> {book.count || 0} </span>
-                    {/* <button onClick={increase}> + </button> */}
-                    <button onClick={() => increaseCount(title)}> + </button>
-                  </div>
-                  <button>Order</button>
-                </div>
-              </div>
-            )
-          })}
-        </li>
-      </ul>
+      {isLoading ?
+       <ul>
+       <li key={books}> {books.map((book) => {
+           // const {title, author, quantity} = book; 
+           return (
+             <div>
+               <p>{book.title}</p>
+               <p>{book.author}</p>
+               <p>{book.quantity}</p>
+               <div className="order-section">
+                 <div className="order-add-remove-btn">
+                 <button onClick={() => decreaseCount(book.title)}> - </button>
+                   <span> {book.count || 0} </span>
+                   <button onClick={() => increaseCount(book.title)}> + </button>
+                 </div>
+                 <button onClick={() => placeOrderAndResetValue(book.title)}>Order</button>
+               </div>
+             </div>
+           )
+         })}
+       </li>
+     </ul> : <p>loading</p>}
+     
     </div>
     </>
   )

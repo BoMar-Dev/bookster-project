@@ -7,7 +7,7 @@ export default async function fetchApi(url, method, data) {
       "Content-Type": "application/json",}
   };
 
-  if(method !== "GET" && data !== undefined){
+  if(method !== "GET"){
       fetchOptions.body = JSON.stringify(data);
   }
 
