@@ -44,9 +44,14 @@ const FilterUsers = () => {
             const{username, role} = renderUser
 
             return(
-                <div>
+                <div className='filter-users-container'>
                      <p>{username}</p>
                      <p>{role}</p>
+                     <p><span>0</span> purchases</p>
+                     <div>
+                      <button>Promote</button>
+                      <button>Delete</button>
+                     </div>
                 </div>
             )
         })}

@@ -2,11 +2,13 @@ import React from "react";
 import getJwtInfo from '../utils/getJwtInfo';
 import { useState, useEffect } from "react";
 import PageNavigation from "../components/PageNavigation";
+// import Order from "../components/Order";
 
 
 export const UserPage = () => {
   const API_URL = 'http://localhost:4000/library/books';
   const [books, setBooks] = useState([]);
+  const [count, setCount] = useState(0);
  
   PageNavigation();
 
@@ -26,7 +28,33 @@ export const UserPage = () => {
   }, []);
 
 
+  const decreaseCount = (title) => {
+    setBooks(books.map(book => {
+      if(book.title === title){
+        if(book.count === undefined){
+          book.count = 0;
+        }
+        book.count -= 1
+      }
+      return book;
+    }))
+  }
 
+  //Jakob brukar skriva : books.count = book.count === undefined ? 0 : book.count;
+
+  const increaseCount = (title) => {
+    setBooks(books.map(book => {
+      if(book.title === title){
+        if(book.count === undefined){
+          book.count = 0;
+        }
+        book.count += 1
+      }
+      return book;
+    }))
+  }
+
+  
 
   return (
     <>
@@ -47,9 +75,10 @@ export const UserPage = () => {
                 <p>{quantity}</p>
                 <div className="order-section">
                   <div className="order-add-remove-btn">
-                    <button> - </button>
-                    <span> 0 </span>
-                    <button> + </button>
+                  <button onClick={() => decreaseCount(title)}> - </button>
+                    <span> {book.count || 0} </span>
+                    {/* <button onClick={increase}> + </button> */}
+                    <button onClick={() => increaseCount(title)}> + </button>
                   </div>
                   <button>Order</button>
                 </div>

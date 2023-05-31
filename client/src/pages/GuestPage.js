@@ -3,7 +3,6 @@ import React from 'react'
 import { SearchField } from '../components/SearchField';
 import { useNavigate } from 'react-router-dom';
 import PageNavigation from '../components/PageNavigation';
-import FetchApi from '../API/FetchApi';
 
 export const GuestPage = () => {
   const [books, setBooks] = useState([]);
