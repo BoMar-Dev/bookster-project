@@ -15,14 +15,6 @@ export const GuestPage = () => {
   const API_URL = 'http://localhost:4000/library/books';
 
 
-  //  function quantityCheck () {
-  //  // quanitty fron api
-  //  // quantity from api minus 1
-  //  // sparas i ny lista
-  //  //uppdateras och renderas ut
-
-  // }
-
 
   
   useEffect(() => {

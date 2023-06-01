@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { RegisterService } from '../components/Service/RegisterService';
+import '../style/LoginPage.css';
 
 export const RegisterPage = () => {
     const [password, setPassword] = useState('');
@@ -51,9 +52,11 @@ export const RegisterPage = () => {
                   >
 
                   </input>
-                  <button type="submit">Register new account</button>
+                  <button className="signin-btn" type="submit">Register new account</button>
               </form>
-              <p>Already an account? Sign in <a href="/">here!</a></p>
+              <div className='guest-div'>
+                <p className='no-account-text'>Already an account? Sign in <a href="/">here!</a></p>
+              </div>
               
           </div>
       </div>

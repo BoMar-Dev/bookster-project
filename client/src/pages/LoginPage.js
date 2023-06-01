@@ -70,7 +70,7 @@ import getJwtInfo from '../utils/getJwtInfo';
                 <button className='signin-btn' type="submit">Sign in</button>
             </form>
             <div className='guest-div'>
-            <p>No account? Sign up <a href="/register" >here!</a></p>
+            <p className='no-account-text'>No account? Sign up <a href="/register" >here!</a></p>
             <button className='guest-btn' data-testid="guest-btn" onClick={()=>setProceedAsGuest(!proceedAsGuest)}><a href="/guest">Proceed as guest user</a></button>
             </div>
            

@@ -132,9 +132,9 @@ const editBooks = (title, author, quantity)=>{
   
   return (
     <div className="admin-books-container">
-      <SearchField />
-      <div>
-          <button className="add-book">Add new Books</button>
+      <div className="search-add-wrapper">
+        <SearchField />
+        <button className="add-book">Add new Books</button>
       </div>
       <section className="title-section">
         <h2>Book title</h2>

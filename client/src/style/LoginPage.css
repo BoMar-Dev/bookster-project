@@ -1,4 +1,5 @@
-.login-container h1{
+.login-container h1,
+.register-container h1{
     background-color: rgb(114, 114, 114);
     color: white;
     padding: 1em;
@@ -10,7 +11,8 @@
     border-radius: 5px;
 }
 
-.login-container{
+.login-container,
+.register-container{
     /* border: 2px solid black; */
     background-color: rgb(228, 228, 228);
     width: 400px;
@@ -22,13 +24,14 @@
 .signin-btn{
     background-color: #98c9a3;
     width: 100%;
-    padding: 5px;
+    padding: 10px;
     margin-top: 10px;
 }
 
 .guest-btn{
     background-color: #dde7c7;
-    padding: 5px;
+    padding: 8px;
+    width: 100%;
 }
 
 a {
@@ -39,7 +42,8 @@ button {
 }
 
 
-.login-form{
+.login-form,
+.register-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,14 +51,16 @@ button {
     width: 350px;
 }
 
-.login-form input {
+.login-form input,
+.register-form input {
     padding: .5em 1em;
     margin: 1em 0;
     border-radius: .2em;
     border-style: none;
 }
 
-.login-form label {
+.login-form label,
+.register-form label {
     font-size: .9rem;
     padding-left: 1em;
 }
@@ -62,11 +68,18 @@ button {
 .guest-div{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 350px;
     padding: .5em 1.5em;
     
 }
 
-.book-title{
-    
+.no-account-text {
+    font-size: .8rem;
+    padding-left: .5em;
+}
+
+.no-account-text a {
+    font-weight: 600;
+    text-decoration: underline;
 }
