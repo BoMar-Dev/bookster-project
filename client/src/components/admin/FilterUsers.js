@@ -5,6 +5,8 @@ import axios from 'axios';
 import getJwtInfo from '../../utils/getJwtInfo';
 import isAdmin from '../../utils/getJwtInfo';
 import fetchApi from '../../data/FetchApi';
+import '../../style/Admin.css';
+import '../../style/Main.css';
 
 const FilterUsers = () => {
     const API_URL = 'http://localhost:4000/admin/users';
@@ -30,9 +32,9 @@ const FilterUsers = () => {
     
     <div className="admin-users-container">
       <div>
-        <input type="text" placeholder="Search by user..."></input>
+        <input className='user-search' type="text" placeholder="Search by user..."></input>
       </div>
-      <section>
+      <section className="title-section">
         <h2>Username</h2>
         <h2>Role</h2>
         <h2>Purchases</h2>
@@ -44,13 +46,13 @@ const FilterUsers = () => {
             const{username, role} = renderUser
 
             return(
-                <div className='filter-users-container'>
+                <div className="book-info-container">
                      <p>{username}</p>
                      <p>{role}</p>
                      <p><span>0</span> purchases</p>
                      <div>
-                      <button>Promote</button>
-                      <button>Delete</button>
+                      <button className="promote-btn">Promote</button>
+                      <button className="delete-btn">Delete</button>
                      </div>
                 </div>
             )

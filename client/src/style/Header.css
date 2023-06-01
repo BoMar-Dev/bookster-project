@@ -1,3 +1,10 @@
 .header-container {
-    background-color: grey;
+    background-color: rgb(200, 200, 200);
+    padding: .5em;
+    text-align: center;
+}
+
+.header-title {
+    font-weight: 400;
+    font-size: 1.5rem;
 }

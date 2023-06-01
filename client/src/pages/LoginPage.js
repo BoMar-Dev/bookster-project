@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { LoginService } from '../components/Service/LoginService';
+import '../style/LoginPage.css';
 
 import getJwtInfo from '../utils/getJwtInfo';
 
@@ -46,7 +47,7 @@ import getJwtInfo from '../utils/getJwtInfo';
     <div className='login-container'>
         <h1>Login</h1>
         <div className='login-wrapper'>
-            <form className='login-form' onSubmit={handleLogin}>
+            <form className='login-form' data-testid="login-form-test" onSubmit={handleLogin}>
                 <label>Username</label>
                 <input 
                 type="text" 
@@ -66,11 +67,12 @@ import getJwtInfo from '../utils/getJwtInfo';
                 onChange={(e) => setPassword(e.target.value)}
                 >
                 </input>
-                <button type="submit">Sign in</button>
+                <button className='signin-btn' type="submit">Sign in</button>
             </form>
+            <div className='guest-div'>
             <p>No account? Sign up <a href="/register" >here!</a></p>
-            <button onClick={()=>setProceedAsGuest(!proceedAsGuest)} ><a href="/guest">Proceed as guest user</a></button>
-           
+            <button className='guest-btn' data-testid="guest-btn" onClick={()=>setProceedAsGuest(!proceedAsGuest)}><a href="/guest">Proceed as guest user</a></button>
+            </div>
            
         </div>
     </div>

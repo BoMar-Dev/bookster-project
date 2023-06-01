@@ -1,4 +1,78 @@
+.filter-btn-container{
+    display: flex;
+    justify-content: center;
+}
+
 .filter-btns {
     background-color: rgb(43, 43, 43);
     color: white;
+    margin: .2em .5em;
+    padding: 10px 30px 10px 30px;
+ 
+    
+    
+    
 }
+
+button {
+    border-style: none;
+    padding: .5em 1em;
+    margin: .5em;
+    border-radius: .2em;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.497);
+}
+
+.admin-books-container,
+.admin-users-container  {
+    width: 1000px;
+    margin: 1em auto;
+    /* border: .5px solid rgb(178, 169, 169); */
+    border-radius: 1em;
+    padding: 1em;
+    box-shadow: 2px 2px 5px 1px rgba(171, 171, 171, 0.519);
+}
+
+
+
+
+.delete-btn{
+    background-color: rgb(190, 154, 154)
+}
+
+.add-book{
+    background: #77BFA3;
+    width: 20%;
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 18px;
+}
+
+.edit-btn{
+    background-color: rgb(74, 128, 143)
+}
+
+.order-btn{
+    background-color: rgb(93, 96, 96);
+    color: white
+}
+
+.promote-btn{
+    background-color: rgb(150, 190, 129);
+}
+
+.order-section,
+.action-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-field, .user-search {
+    margin-top: 10px;
+    margin-left: 18px;
+    padding: 5px;
+    width: 185px;
+    
+
+}
+

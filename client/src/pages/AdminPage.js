@@ -8,6 +8,7 @@ import isAdmin from '../utils/isAdmin';
 import getJwtInfo from '../utils/getJwtInfo';
 import { useEffect } from "react";
 import PageNavigation from "../components/PageNavigation";
+import '../style/Main.css';
 
 export const AdminPage = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export const AdminPage = () => {
   return (
     <>
     <div className="filter-btn-container">
-          <button className="filter-btns" onClick={() => {navigate('/admin/books')}}>Books</button>
+          <button className="filter-btns" onClick={() => {navigate('/admin/books')}} >Books</button>
           <button className="filter-btns" onClick={() => {navigate('/admin/users')}}>Users</button>
     </div>
     {/* <FilterBooks /> */}

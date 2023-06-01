@@ -3,6 +3,7 @@ import getJwtInfo from '../utils/getJwtInfo';
 import { useState, useEffect } from "react";
 import PageNavigation from "../components/PageNavigation";
 import fetchApi from "../data/FetchApi";
+import '../style/Main.css';
 // import ActionSection from "../components/ActionSection";
 
 
@@ -92,7 +93,7 @@ export const UserPage = () => {
   return (
     <>
     <div className='user-container'>
-        <section>
+        <section className="title-section">
         <h2>Book title</h2>
         <h2>Book author</h2>
         <h2>Availability</h2>
@@ -103,7 +104,7 @@ export const UserPage = () => {
        <li key={books}> {books.map((book) => {
            // const {title, author, quantity} = book; 
            return (
-             <div>
+             <div className="book-info-container">
                <p>{book.title}</p>
                <p>{book.author}</p>
                <p>{book.quantity}</p>
@@ -113,7 +114,7 @@ export const UserPage = () => {
                    <span> {book.count || 0} </span>
                    <button onClick={() => increaseCount(book.title)}> + </button>
                  </div>
-                 <button onClick={() => orderAndReset(book.title)}>Order</button>
+                 <button className="order-btn" onClick={() => orderAndReset(book.title)}>Order</button>
                </div>
              </div>
            )

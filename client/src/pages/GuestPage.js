@@ -3,6 +3,8 @@ import React from 'react'
 import { SearchField } from '../components/SearchField';
 import { useNavigate } from 'react-router-dom';
 import PageNavigation from '../components/PageNavigation';
+import '../style/Main.css';
+import '../style/LoginPage.css';
 
 export const GuestPage = () => {
   const [books, setBooks] = useState([]);
@@ -44,7 +46,7 @@ export const GuestPage = () => {
   return (
     <div className='guest-container'>
       < SearchField />
-      <section>
+      <section className="title-section">
         <h2>Book title</h2>
         <h2>Book author</h2>
         <h2>Availability</h2>
@@ -53,8 +55,8 @@ export const GuestPage = () => {
         <li key={books}> {books.map((book) => {
             const {title, author, quantity} = book; 
             return (
-              <div>
-                <p>{title}</p>
+              <div class="book-info-container">
+                <p className='book-title'>{title}</p>
                 <p>{author}</p>
                 <p>{quantity}</p>
               </div>
