@@ -1,9 +1,13 @@
-
+import React from "react";
 import { useState, useEffect } from "react";
+import fetchApi from "../../data/FetchApi";
+
 
 const FilterBooks = () => {
   const API_URL = 'http://localhost:4000/library/books';
   const [books, setBooks] = useState([]);
+  const [count, setCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true)
 
 
       const fetchData = async () => {
@@ -22,7 +26,76 @@ const FilterBooks = () => {
     fetchData();
     
   }, []);
-  
+
+
+  const decreaseCount = (title) => {
+    setBooks(books.map(book => {
+      if(book.title === title){
+        if(book.count === undefined){
+          book.count = 0;
+        }
+        book.count -= 1
+      }
+      return book;
+    }))
+  }
+
+
+  const increaseCount = (title) => {
+    setBooks(books.map(book => {
+      if(book.title === title){
+        if(book.count === undefined){
+          book.count = 0;
+        }
+        book.count += 1
+        console.log(count);
+
+      }
+      return book;
+    }))
+  }
+
+
+ const orderAndReset = (title) => {
+  setIsLoading(false)
+  console.log(title)
+  setBooks(books.map(async book => {
+     if(book.title === title){
+      const quantity = book.count;
+      const response = await fetchApi("http://localhost:4000/library/user/books","POST", {title, quantity})
+      // console.log(await response.json())
+      if(response.status < 400){
+        const data = await response.json();
+        console.log(data)
+        setBooks(data.context.books)
+      }else{
+        console.log(await response.text());
+      }
+      setIsLoading(true)
+    }
+  }))
+}
+
+const deleteBook = (title) => {
+  setIsLoading(false)
+  setBooks(books.map(async book => {
+    if(book.title === title){
+      // const bookInfo = book.context
+      const response = await fetchApi("http://localhost:4000/admin/books", "DELETE", {title})
+      if (response.status < 400) {
+        const data = await response.json();
+        console.log(data);
+        setBooks(data.context.books)
+      } else {
+        console.log(await response.text());
+      }
+      setIsLoading(true)
+    }
+  }))
+}
+
+
+
   
   return (
     <div className="admin-books-container">
@@ -36,31 +109,31 @@ const FilterBooks = () => {
         <h2>Order</h2>
         <h2>Action</h2>
       </section>
+      {isLoading ?
       <ul>
         <li key={books}> {books.map((book) => {
-            const {title, author, quantity} = book; 
             return (
               <div>
-                <p>{title}</p>
-                <p>{author}</p>
-                <p>{quantity}</p>
+                <p>{book.title}</p>
+                <p>{book.author}</p>
+                <p>{book.quantity}</p>
                 <div className="order-section">
                   <div className="order-add-remove-btn">
-                    <button> - </button>
-                    <span> 0 </span>
-                    <button> + </button>
+                  <button onClick={() => decreaseCount(book.title)}> - </button>
+                   <span> {book.count || 0} </span>
+                   <button onClick={() => increaseCount(book.title)}> + </button>
                   </div>
-                  <button>Order</button>
+                  <button onClick={() => orderAndReset(book.title)}>Order</button>
                 </div>
                 <div className="action-section">
                   <button>Edit</button>
-                  <button>Delete</button>
+                  <button onClick={deleteBook}>Delete</button>
                 </div>
               </div>
             )
           })}
         </li>
-      </ul>
+      </ul> : <p>loading</p>}
     </div>
   )
 }

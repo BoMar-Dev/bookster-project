@@ -33,8 +33,6 @@ export const UserPage = () => {
 
   
 
-
-
   // Jakob brukar skriva : books.count = book.count === undefined ? 0 : book.count;
   // när vi trycker på order --> count nollas, antalet counts kan inte överskrida quantity
 
@@ -66,14 +64,8 @@ export const UserPage = () => {
     }))
   }
 
-  // const placeOrderAndResetValue = async (title) => {
-  //   console.log(title,book)
-  //   const response = await fetchApi("http://localhost:4000/library/user/books", "POST", {title, book.count})
-    
-  //     setIsLoading(false)
-  //   }
 
- const placeOrderAndResetValue = (title) => {
+ const orderAndReset = (title) => {
   setIsLoading(false)
   console.log(title)
   setBooks(books.map(async book => {
@@ -96,23 +88,6 @@ export const UserPage = () => {
   
   
 }
-//  }
-  // const placeOrderAndResetValue = (title) => {
-  //   setBooks(books.map(book => {
-  //     if(book.title === title){
-  //       book.count = 0;
-  //       console.log(books.quantity);
-  //     }
-  //     return book;
-  //   }))
-// }
-
-//  POST /library/user/books { "title", "quantity" }
-// "title" är case sensitive. "quantity" godtas endast om antal böcker finns i databasen.
-// Responsen är en lista över alla böcker och ett verisonsnummer som används vid högre betyg. Se kriterier.
-
-// Vid avsaknad av paramterar ges 403.
-  
 
   return (
     <>
@@ -138,7 +113,7 @@ export const UserPage = () => {
                    <span> {book.count || 0} </span>
                    <button onClick={() => increaseCount(book.title)}> + </button>
                  </div>
-                 <button onClick={() => placeOrderAndResetValue(book.title)}>Order</button>
+                 <button onClick={() => orderAndReset(book.title)}>Order</button>
                </div>
              </div>
            )
