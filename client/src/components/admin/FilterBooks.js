@@ -80,9 +80,10 @@ const deleteBook = (title) => {
   setIsLoading(false)
   setBooks(books.map(async book => {
     if(book.title === title){
-      // const bookInfo = book.context
-      const response = await fetchApi("http://localhost:4000/admin/books", "DELETE", {title})
-      if (response.status < 400) {
+      const quantity = book.count;
+      const response = await fetchApi("http://localhost:4000/admin/books", "DELETE", {title ,quantity})
+      // console.log(await response.json())
+    if (response.status < 400) {
         const data = await response.json();
         console.log(data);
         setBooks(data.context.books)
@@ -92,7 +93,7 @@ const deleteBook = (title) => {
       setIsLoading(true)
     }
   }))
-}
+};
 
 
 
@@ -127,7 +128,7 @@ const deleteBook = (title) => {
                 </div>
                 <div className="action-section">
                   <button>Edit</button>
-                  <button onClick={deleteBook}>Delete</button>
+                  <button onClick={() => deleteBook(book.title)}>Delete</button>
                 </div>
               </div>
             )
