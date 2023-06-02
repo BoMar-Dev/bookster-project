@@ -1,3 +1,7 @@
+/*
+searching for books, author or matching words from the API and to show only that on page.
+*/
+
 import { useState, useEffect } from "react";
 import fetchApi from "../data/FetchApi";
 

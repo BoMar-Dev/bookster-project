@@ -1,16 +1,17 @@
+/* 
+guest view.
+fetching and render the list of books from the API.
+*/
+
 import { useState, useEffect } from "react";
 import React from "react";
 import { SearchField } from "../components/SearchField";
-import { useNavigate } from "react-router-dom";
 import PageNavigation from "../components/PageNavigation";
 import "../style/Main.css";
 import "../style/LoginPage.css";
 
 export const GuestPage = () => {
   const [books, setBooks] = useState([]);
-  const navigate = useNavigate();
-
-  // FetchApi();
 
   const API_URL = "http://localhost:4000/library/books";
 

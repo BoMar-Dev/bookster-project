@@ -1,10 +1,14 @@
+/* 
+user permission.
+fetching and render the list of books from the API.
+increase and decrease the value of count, placing the order, and reseting the count value.
+*/
+
 import React from "react";
-import getJwtInfo from "../utils/getJwtInfo";
 import { useState, useEffect } from "react";
 import PageNavigation from "../components/PageNavigation";
 import fetchApi from "../data/FetchApi";
 import "../style/Main.css";
-// import ActionSection from "../components/ActionSection";
 
 export const UserPage = () => {
   const API_URL = "http://localhost:4000/library/books";
@@ -27,9 +31,6 @@ export const UserPage = () => {
     };
     fetchData();
   }, []);
-
-  // Jakob brukar skriva : books.count = book.count === undefined ? 0 : book.count;
-  // när vi trycker på order --> count nollas, antalet counts kan inte överskrida quantity
 
   const decreaseCount = (title) => {
     setBooks(

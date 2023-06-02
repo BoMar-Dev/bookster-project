@@ -132,11 +132,13 @@ const FilterBooks = () => {
 
   return (
     <div className="admin-books-container">
-      <div
-        onClick={() => handleAdd(setSavedBook(books))}
-        className="search-add-wrapper">
+      <div className="search-add-wrapper">
         <SearchField setbooks={setBooks} />
-        <button className="add-book">Add new Books</button>
+        <button
+          className="add-book"
+          onClick={() => handleAdd(setSavedBook(books))}>
+          Add new Books
+        </button>
       </div>
       <section className="title-section">
         <h2>Book title</h2>

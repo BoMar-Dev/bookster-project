@@ -1,7 +1,9 @@
 /*
 It is from this page that we send the header text "Bookster Website" to all our pages. 
-This is also where we handle the functionality when a button should say "LOG IN" and when a button should say "LOG OUT". "
+This is also where we handle the functionality when a button should say "LOG IN" and when a button should say "LOG OUT". 
+It works with SignInAnd Sign Out Button.js"
 */
+
 import { useState, useEffect } from "react";
 import "../style/Header.css";
 import { signInButton, signOutBtn } from "./SignInAndOutButton";
@@ -30,12 +32,6 @@ const Header = () => {
       <h1 className="header-title">Bookster Website</h1>
 
       {loggedIn ? signOutBtn() : signInButton()}
-
-      {/* {!loggedIn && signInButton()} */}
-      {/* <div className="Allt-inom-denna-div-ska-döljas-på-startsidan">
-          <p>Browsing as GUEST <span>--username--</span></p>
-          {signInButton()}
-        </div> */}
     </header>
   );
 };
