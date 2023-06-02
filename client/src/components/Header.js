@@ -1,7 +1,10 @@
+/*
+It is from this page that we send the header text "Bookster Website" to all our pages. 
+This is also where we handle the functionality when a button should say "LOG IN" and when a button should say "LOG OUT". "
+*/
 import { useState, useEffect } from "react";
 import "../style/Header.css";
 import { signInButton, signOutBtn } from "./SignInAndOutButton";
-import { SearchField } from "./SearchField";
 import getJwtInfo from "../utils/getJwtInfo";
 
 const Header = () => {

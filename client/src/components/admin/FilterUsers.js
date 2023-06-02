@@ -1,3 +1,10 @@
+/*
+Admin permission only.
+fetching and render the list of users from the API.
+promoting a user to admin.
+deleting a user from the list and update the new list
+*/
+
 import React from "react";
 import { useState, useEffect } from "react";
 import fetchApi from "../../data/FetchApi";

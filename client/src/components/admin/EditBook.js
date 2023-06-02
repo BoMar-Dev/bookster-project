@@ -1,4 +1,9 @@
-import { useState, useEffect } from "react";
+/*
+Admin permission only.
+Updating information about a book (title, author and quantity).
+Previous state of books is connected to "book" and the updated version is connected to "values".
+*/
+
 import fetchApi from "../../data/FetchApi";
 import "../../style/Main.css";
 import "../../style/Admin.css";
@@ -29,7 +34,7 @@ export default function EditBook({ book }) {
 
   return (
     <div className="edit-book-container">
-      <h2>Edit Book</h2>
+      <h2 className="edit-text">Edit Book</h2>
       <form className="edit-book-form" onSubmit={submitBook}>
         <label>Title - {book.title}</label>
         <input
@@ -53,7 +58,9 @@ export default function EditBook({ book }) {
           placeholder="insert new Quantity"
           // onChange={(e) => setQuantity(e.target.value)}
         ></input>
-        <button type="submit">Save Changes</button>
+        <button type="submit" className="save-changes-btn">
+          Save Changes
+        </button>
         {/* <button>Discard Changes</button> */}
       </form>
     </div>

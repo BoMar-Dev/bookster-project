@@ -1,14 +1,17 @@
-import { useState, useEffect } from "react";
+/*
+Admin permission only.
+creating a new book by title, author and quantity.
+placing the new book into the already existing list of books.
+*/
+
 import fetchApi from "../../data/FetchApi";
 import "../../style/Main.css";
 import "../../style/Admin.css";
-import { useNavigate } from "react-router-dom";
 
 export default function AddBook({ setBooks }) {
-  const navigate = useNavigate();
-
   async function submitBook(e) {
     e.preventDefault();
+
     const formValue = new FormData(e.target); //tar in data från formen (pga onSubmit)
     const values = Object.fromEntries(formValue); //  gör det till ett object
 
@@ -33,7 +36,7 @@ export default function AddBook({ setBooks }) {
 
   return (
     <div className="edit-book-container">
-      <h2>Add Book</h2>
+      <h2 className="add-text">Add Book</h2>
       <form className="edit-book-form" onSubmit={submitBook}>
         <label>Title </label>
         <input
@@ -57,21 +60,10 @@ export default function AddBook({ setBooks }) {
           placeholder="insert new Quantity"
           // onChange={(e) => setQuantity(e.target.value)}
         ></input>
-        <button type="submit">Save Changes</button>
-        {/* <button
-          onClick={() => {
-            navigate("/admin/books");
-          }}>
-          Discard Changes
-        </button> */}
+        <button className="save-changes-btn" type="submit">
+          Save Changes
+        </button>
       </form>
     </div>
   );
 }
-
-// TITLE - ERAGON
-// jag väljer namnet olle
-// AUTHOR - Christopher Paolini
-// trötter
-// QUANTITY - 3
-// 5000

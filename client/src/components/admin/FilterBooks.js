@@ -1,8 +1,15 @@
+/*
+Admin permission only.
+fetching and render the list of books from the API.
+increase and decrease the value of count, placing the order, and reseting the count value.
+deleting a book from the list and update the new list
+edit and add new books handlers for navigation to another component.
+*/
+
 import React from "react";
 import { useState, useEffect } from "react";
 import fetchApi from "../../data/FetchApi";
 import EditBook from "./EditBook";
-// import '../style/Main.css';
 import "../../style/Main.css";
 import { SearchField } from "../SearchField";
 import AddBook from "./AddBook";
@@ -193,7 +200,8 @@ const FilterBooks = () => {
             onClick={() => {
               setShowModal(false);
               setIsLoading(true);
-            }}>
+            }}
+            className="close-btn">
             Close Pop-up
           </button>
         </div>
@@ -205,7 +213,8 @@ const FilterBooks = () => {
             onClick={() => {
               setShowAddBook(false);
               setIsLoading(true);
-            }}>
+            }}
+            className="close-btn">
             Close Pop-up
           </button>
         </div>
