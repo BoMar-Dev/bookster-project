@@ -20,6 +20,7 @@ const FilterUsers = () => {
     } else {
       console.log(await response.text());
     }
+    console.log(users);
   }
 
   async function deleteUser(username) {
@@ -70,15 +71,22 @@ const FilterUsers = () => {
       <ul>
         <li key={users}>
           {users.map((renderUser) => {
-            const { username, role } = renderUser;
+            const { username, role, purchases } = renderUser;
 
             return (
               <div className="book-info-container">
                 <p>{username}</p>
                 <p>{role}</p>
-                <p>
-                  <span>0</span> purchases
-                </p>
+                {purchases ? (
+                  <p>
+                    <span>{purchases.length}</span> purchases
+                  </p>
+                ) : (
+                  <p>
+                    <span>0</span> purchases
+                  </p>
+                )}
+
                 <div>
                   <button
                     onClick={() => {

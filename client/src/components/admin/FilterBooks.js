@@ -18,8 +18,8 @@ const FilterBooks = () => {
     try {
       const response = await fetch(API_URL);
       const books = await response.json();
-      console.log(books);
-      setBooks(books);
+      console.log(books.books);
+      setBooks(books.books);
     } catch (error) {
       console.log(error);
     }
@@ -85,6 +85,8 @@ const FilterBooks = () => {
   };
 
   const deleteBook = (title) => {
+    console.log(title);
+    console.log();
     setIsLoading(false);
     setBooks(
       books.map(async (book) => {
@@ -99,7 +101,7 @@ const FilterBooks = () => {
           if (response.status < 400) {
             const data = await response.json();
             console.log(data);
-            setBooks(data.context.books);
+            setBooks(data.context.ctx.books);
           } else {
             console.log(await response.text());
           }
@@ -117,7 +119,7 @@ const FilterBooks = () => {
   return (
     <div className="admin-books-container">
       <div className="search-add-wrapper">
-        <SearchField />
+        <SearchField setbooks={setBooks} />
         <button className="add-book">Add new Books</button>
       </div>
       <section className="title-section">
