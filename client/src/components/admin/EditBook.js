@@ -54,7 +54,7 @@ export default function EditBook({ book }) {
           // onChange={(e) => setQuantity(e.target.value)}
         ></input>
         <button type="submit">Save Changes</button>
-        <button>Discard Changes</button>
+        {/* <button>Discard Changes</button> */}
       </form>
     </div>
   );

@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import fetchApi from "../../data/FetchApi";
 import "../../style/Main.css";
 import "../../style/Admin.css";
+import { useNavigate } from "react-router-dom";
 
 export default function AddBook({ setBooks }) {
+  const navigate = useNavigate();
+
   async function submitBook(e) {
     e.preventDefault();
     const formValue = new FormData(e.target); //tar in data från formen (pga onSubmit)
@@ -55,7 +58,12 @@ export default function AddBook({ setBooks }) {
           // onChange={(e) => setQuantity(e.target.value)}
         ></input>
         <button type="submit">Save Changes</button>
-        <button>Discard Changes</button>
+        {/* <button
+          onClick={() => {
+            navigate("/admin/books");
+          }}>
+          Discard Changes
+        </button> */}
       </form>
     </div>
   );
