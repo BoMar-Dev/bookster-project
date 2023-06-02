@@ -5,6 +5,7 @@ import EditBook from "./EditBook";
 // import '../style/Main.css';
 import "../../style/Main.css";
 import { SearchField } from "../SearchField";
+import AddBook from "./AddBook";
 
 const FilterBooks = () => {
   const API_URL = "http://localhost:4000/library/books";
@@ -12,6 +13,7 @@ const FilterBooks = () => {
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [showAddBook, setShowAddBook] = useState(false);
   const [savedBook, setSavedBook] = useState([]);
 
   const fetchData = async () => {
@@ -27,7 +29,7 @@ const FilterBooks = () => {
 
   useEffect(() => {
     fetchData();
-  }, [showModal]); // varje gång ett nytt värde tilldelas till books så uppdateras det.
+  }, [showModal, showAddBook]); // varje gång ett nytt värde tilldelas till books så uppdateras det.
 
   const decreaseCount = (title) => {
     setBooks(
@@ -116,9 +118,16 @@ const FilterBooks = () => {
     setIsLoading(false);
   };
 
+  const handleAdd = async (book) => {
+    setShowAddBook(true);
+    setIsLoading(false);
+  };
+
   return (
     <div className="admin-books-container">
-      <div className="search-add-wrapper">
+      <div
+        onClick={() => handleAdd(setSavedBook(books))}
+        className="search-add-wrapper">
         <SearchField setbooks={setBooks} />
         <button className="add-book">Add new Books</button>
       </div>
@@ -183,6 +192,18 @@ const FilterBooks = () => {
           <button
             onClick={() => {
               setShowModal(false);
+              setIsLoading(true);
+            }}>
+            Close Pop-up
+          </button>
+        </div>
+      )}
+      {showAddBook && (
+        <div className="popup-window">
+          <AddBook book={savedBook} />
+          <button
+            onClick={() => {
+              setShowAddBook(false);
               setIsLoading(true);
             }}>
             Close Pop-up

@@ -1,9 +1,5 @@
 import React from "react";
-import { SearchField } from "../SearchField";
 import { useState, useEffect } from "react";
-import axios from "axios";
-import getJwtInfo from "../../utils/getJwtInfo";
-import isAdmin from "../../utils/getJwtInfo";
 import fetchApi from "../../data/FetchApi";
 import "../../style/Admin.css";
 import "../../style/Main.css";
@@ -14,13 +10,15 @@ const FilterUsers = () => {
 
   async function getUserList() {
     const response = await fetchApi(API_URL, "GET");
+    // console.log(await response.json());
 
     if (response.status < 400) {
-      setUsers(await response.json());
+      const data = await response.json();
+      console.log(data);
+      setUsers(data.users);
     } else {
       console.log(await response.text());
     }
-    console.log(users);
   }
 
   async function deleteUser(username) {
