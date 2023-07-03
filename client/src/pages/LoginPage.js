@@ -62,7 +62,7 @@ const LoginPage = () => {
             placeholder="Type your username..."
             autoComplete="off"
             value={username}
-            required
+            // required
             onChange={(e) => setUsername(e.target.value)}></input>
           <label>Password</label>
           <input
@@ -70,9 +70,13 @@ const LoginPage = () => {
             data-testid="login-passwordfield"
             placeholder="Type your password..."
             value={password}
-            required
+            // required
             onChange={(e) => setPassword(e.target.value)}></input>
-          <button data-testid="login-btn" className="signin-btn" type="submit">
+          <button
+            disabled={!username || !password}
+            data-testid="login-btn"
+            className="signin-btn"
+            type="submit">
             Sign in
           </button>
         </form>

@@ -19,6 +19,7 @@ const signInButton = () => {
 const signOutBtn = () => {
   return (
     <button
+      data-testid="signoutbtn"
       onClick={() => {
         sessionStorage.clear();
       }}

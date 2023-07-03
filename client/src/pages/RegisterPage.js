@@ -40,7 +40,7 @@ export const RegisterPage = () => {
           <label>Username</label>
           <input
             type="text"
-            placeholder="Register your username..."
+            placeholder="Type your username..."
             autoComplete="off"
             value={username}
             required

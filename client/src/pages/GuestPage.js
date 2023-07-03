@@ -9,6 +9,7 @@ import { SearchField } from "../components/SearchField";
 import PageNavigation from "../components/PageNavigation";
 import "../style/Main.css";
 import "../style/LoginPage.css";
+import { getBooksFromApi } from "../data/TestFetchApi";
 
 export const GuestPage = () => {
   const [books, setBooks] = useState([]);
@@ -18,6 +19,7 @@ export const GuestPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // getBooksFromApi();
         const response = await fetch(API_URL);
         console.log(response);
         const books = await response.json();
