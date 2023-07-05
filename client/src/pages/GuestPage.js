@@ -45,10 +45,10 @@ export const GuestPage = () => {
       <ul>
         <li key={books}>
           {" "}
-          {books.map((book) => {
+          {books.map((book, index) => {
             const { title, author, quantity } = book;
             return (
-              <div class="book-info-container">
+              <div data-testid={`${title}`} class="book-info-container">
                 <p className="book-title">{title}</p>
                 <p>{author}</p>
                 <p>{quantity}</p>

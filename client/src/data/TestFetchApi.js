@@ -2,24 +2,17 @@
 universal fetching function.
 */
 
-// export const getBooksFromApi = () => {
-//   return fetch("http://localhost:4000/library/books").then((resp) => {
-//     if (resp.status === 200) return resp.json();
-//     else throw new Error("Invalid response");
-//   });
-// };
+export const getBooksFromApi = () => {
+  return fetch("http://localhost:4000/library/books").then((resp) => {
+    if (resp.status === 200) return resp.json();
+    else throw new Error("Invalid response");
+  });
+};
 
-// const API_URL = "http://localhost:4000/library/books";
-
-// export const getBooksFromApi = async () => {
-//   const response = await fetch("http://localhost:4000/library/books");
-//   console.log(response);
-//   const books = await response.json();
-//   console.log(books);
-//   return books;
-// };
-
-// const response = await fetch("http://localhost:4000/library/books");
-// console.log(response);
-// const books = await response.json();
-// console.log(books);
+// REFERENS:
+// export const getPokemonsFromApi = () => {
+//     return fetch("https://pokeapi.co/api/v2/pokemon").then((resp) => {
+//       if (resp.status === 200) return resp.json();
+//       else throw new Error("Invalid response");
+//     });
+//   };

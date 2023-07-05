@@ -8,7 +8,7 @@ import {
 import LoginPage from "./pages/LoginPage";
 import { Route, Routes, BrowserRouter, MemoryRouter } from "react-router-dom";
 import Header from "./components/Header";
-import GuestPage from "./pages/GuestPage";
+import { GuestPage } from "./pages/GuestPage";
 import { App, LocationDisplay } from "./app";
 import { createMemoryHistory } from "history";
 import userEvent from "@testing-library/user-event";
@@ -78,6 +78,20 @@ test("H1 should be rendered", () => {
   );
   const textLogin = screen.getByRole("heading", { level: 1 });
   expect(textLogin).toBeInTheDocument();
+});
+
+test("See if API object is rendering on guest page", async () => {
+  render(
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<GuestPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
+
+  const book = await screen.findByTestId("Eragon", {}, { timeout: 2500 });
+
+  expect(book).toBeInTheDocument();
 });
 
 // -----------------------------------------------
